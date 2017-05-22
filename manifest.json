@@ -1,7 +1,7 @@
 {
   "name": "Stackoverflow Likes",
   "short_name": "Stackoverflow Likes",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "manifest_version": 2,
   "description": "Collect questions or anwsers on Stack Overflow",
   "homepage_url": "https://github.com/xralphack/Stackoverflow-Likes",
