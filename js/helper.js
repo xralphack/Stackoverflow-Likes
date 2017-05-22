@@ -49,7 +49,7 @@ function isQuestionInStorage(questionId, callback) {
 function getQuestionsInStorage(offset, limit, callback) {
 	chrome.storage.sync.get(["questions"], function(result) {
 		var questions = result.questions ? result.questions : [];
-		if (offset && limit) {
+		if (limit) {
 			var hasMore = questions.length > (offset + limit);
 	    	callback(questions.slice(offset, offset + limit), hasMore);
 		} else {
