@@ -15,9 +15,6 @@
     "scripts": ["src/bg/background.js"],
     "persistent": false
   },
-  "chrome_url_overrides": {
-    "newtab": "src/override/override.html"
-  },
   "content_scripts": [
     {
       "matches": [
@@ -42,5 +39,8 @@
   ],
   "permissions": [
     "storage", "webNavigation", "tabs", "http://stackoverflow.com/questions/*", "https://stackoverflow.com/questions/*"
-  ]
+  ],
+  "browser_action": {
+    "title": "Stackoverflow Likes"
+  }
 }
