@@ -88,17 +88,6 @@ hr {
 	padding: 20px;
 }
 
-.sofl-fun {
-	display: none;
-	margin: 40px;
-}
-
-.sofl-fun p {
-	font-family: 'Montserrat', sans-serif;	
-	color: #bdc3c7;
-	font-size: 60px;
-}
-
 .solf-load {
 	margin-bottom: 40px;
 }
@@ -110,4 +99,8 @@ hr {
 #sofl-github img {
   width: 20px;
   height: 20px;
+}
+
+.sofl-markdown {
+	margin-top: 40px;
 }

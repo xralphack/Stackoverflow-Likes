@@ -76,37 +76,4 @@ function getAnswersDetail(answerIds, callback) {
 	});
 }
 
-function getClosedInStorage(callback) {
-	chrome.storage.sync.get(["closed"], function(result) {
-		var closed = result.closed ? result.closed : "false";
-        callback(closed);
-    });
-}
-
-function refreshToggleButtonAndFun(callback) {
-	var closed = $('#sofl-toggle').attr('data-closed');
-	if (closed == "true") {
-		$('#sofl-toggle span').removeClass('glyphicon-eye-open');
-		$('#sofl-toggle span').addClass('glyphicon-eye-close');
-		$('.sofl-questions').fadeOut(500, function() {
-			$('.sofl-fun').fadeIn();
-			if (callback && $('#sofl-questions .col-md-4').length == 0) {
-				callback();
-			}
-		});
-
-	} else {
-		$('#sofl-toggle span').addClass('glyphicon-eye-open');
-		$('#sofl-toggle span').removeClass('glyphicon-eye-close');
-		$('.sofl-fun').fadeOut(500, function() {
-			$('.sofl-questions').fadeIn();
-		});
-	}
-}
-
-function updateClosedInStorage(closed) {
-    chrome.storage.sync.set({ closed: closed });
-}
-
-
 

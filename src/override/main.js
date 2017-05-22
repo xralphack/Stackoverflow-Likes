@@ -1,33 +1,16 @@
 $(document).ready(function() {
 
 	var limit = 6;
+	var offset = 0;
+	displayQuestions(offset, limit);
 
-	getClosedInStorage(function(closed) {
-		$('#sofl-toggle').attr('data-closed', closed);
-		refreshToggleButtonAndFun(function() {
-			displayQuestions(0, limit);
-		});
-		if (closed == "false") {
-			var offset = 0;
-			displayQuestions(0, limit);
-		}
+	$('#sofl-export').on('click', function() {
+		chrome.tabs.create({ url: chrome.runtime.getURL("src/override/export.html") });
 	});
 
 	$('.solf-load-button').on('click', function() {
 		var offset = parseInt($('.solf-load-button').attr('data-offset'));
 		displayQuestions(offset, limit);
-	});
-
-	$('#sofl-toggle').on('click', function() {
-		var closed = $('#sofl-toggle').attr('data-closed');
-		if (closed == "true") {
-			updateClosedInStorage("false");
-			$('#sofl-toggle').attr('data-closed', "false");
-		} else {
-			updateClosedInStorage("true");
-			$('#sofl-toggle').attr('data-closed', "true");
-		}
-		refreshToggleButtonAndFun();
 	});
 
 	$('#sofl-clear').on('click', function() {
