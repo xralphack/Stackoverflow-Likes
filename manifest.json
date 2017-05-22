@@ -1,6 +1,7 @@
 {
   "name": "Stackoverflow Likes",
-  "version": "0.0.1",
+  "short_name": "Stackoverflow Likes",
+  "version": "0.0.2",
   "manifest_version": 2,
   "description": "Collect questions or anwsers on Stack Overflow",
   "homepage_url": "https://github.com/xralphack/Stackoverflow-Likes",
@@ -36,7 +37,8 @@
         "vendor/jquery/jquery.min.js",
         "js/helper.js",
         "src/inject/inject.js"
-      ]
+      ],
+      "run_at": "document_end"
     }
   ],
   "permissions": [
