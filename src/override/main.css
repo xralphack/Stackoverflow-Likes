@@ -106,3 +106,8 @@ hr {
 .solf-load-button {
 	display: none;
 }
+
+#sofl-github img {
+  width: 20px;
+  height: 20px;
+}
