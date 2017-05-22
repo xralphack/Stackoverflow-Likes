@@ -1,3 +1,11 @@
-/**
- * Place your custom CSS styles here.
- **/
+.sofl-like-button {
+  fill: #e2e2e2;
+  position: relative;
+  top: 8px;
+  width: 22px;
+  cursor: pointer;
+}
+
+.sofl-like-button.active {
+  fill: #e74c3c;
+}

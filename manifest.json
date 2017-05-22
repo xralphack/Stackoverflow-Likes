@@ -1,9 +1,9 @@
 {
-  "name": "CHANGE THIS : Extension boilerplate",
+  "name": "Stackoverflow Likes",
   "version": "0.0.1",
   "manifest_version": 2,
-  "description": "This extension was created with the awesome extensionizr.com",
-  "homepage_url": "http://extensionizr.com",
+  "description": "Collect questions or anwsers on Stack Overflow",
+  "homepage_url": "https://github.com/xralphack/Stackoverflow-Likes",
   "icons": {
     "16": "icons/icon16.png",
     "48": "icons/icon48.png",
@@ -14,18 +14,14 @@
     "page": "src/bg/background.html",
     "persistent": false
   },
-  "browser_action": {
-    "default_icon": "icons/icon19.png",
-    "default_title": "browser action demo",
-    "default_popup": "src/browser_action/browser_action.html"
-  },
   "chrome_url_overrides": {
     "newtab": "src/override/override.html"
   },
   "content_scripts": [
     {
       "matches": [
-        "https://www.google.com/*"
+        "https://stackoverflow.com/questions/*",
+        "http://stackoverflow.com/questions/*"
       ],
       "css": [
         "src/inject/inject.css"
@@ -33,11 +29,17 @@
     },
     {
       "matches": [
-        "https://www.google.com/*"
+        "https://stackoverflow.com/questions/*",
+        "http://stackoverflow.com/questions/*"      
       ],
       "js": [
+        "vendor/jquery/jquery.min.js",
+        "js/helper.js",
         "src/inject/inject.js"
       ]
     }
+  ],
+  "permissions": [
+    "storage"
   ]
 }

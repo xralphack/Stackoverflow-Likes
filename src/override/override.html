@@ -1,9 +1,73 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title></title>
+	<meta charset="utf-8">
+	<title>Stackoverflow Likes</title>
+	<link href="https://fonts.googleapis.com/css?family=Montserrat:200i" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="/vendor/bootstrap-3.3.7/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="main.css">
 </head>
 <body>
 
+	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+		<div class="modal-dialog modal-lg" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<h4 class="modal-title" id="myModalLabel">
+						
+					</h4>
+				</div>
+				<div class="modal-body">
+
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">close</button>
+					<a type="button" target="_blank" class="btn btn-primary" id="bounceOut">stack overflow</a>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<header class="sofl-header">
+		<div class="container">
+			<span class="sofl-header-logo">Stackoverflow </span>
+			<span class="sofl-header-logo-heart glyphicon glyphicon-heart"></span>
+		</div>
+	</header>
+	<section class="sofl-section">
+		<div class="container">
+			<div class="sofl-tools">
+				<div class="btn-toolbar" role="toolbar">
+					<button id="sofl-clear" type="button" class="btn btn-default">
+						<span class="glyphicon glyphicon-trash"></span>
+					</button>
+					<button id="sofl-toggle" data-closed="false" type="button" class="btn btn-default">
+						<span class="glyphicon glyphicon-eye-open"></span>
+					</button>
+				</div>
+			</div>
+			<div class="sofl-fun text-center">
+				<p>Happy Coding</p>
+			</div>
+			<div class="sofl-questions">
+				<div class="row solf-content">
+
+				</div>
+				<div class="row text-center solf-load">
+					<div class="col-md-4 col-md-offset-4">
+						<button class="btn btn-primary btn-block solf-load-button" data-offset="0">Load More</button>
+					</div>
+				</div>
+			</div>
+			
+		</div>
+
+	</section>
+	<script type="text/javascript" src="/vendor/jquery/jquery.min.js"></script>
+	<script type="text/javascript" src="/vendor/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="/js/helper.js"></script>
+	<script type="text/javascript" src="main.js"></script>
 </body>
 </html>

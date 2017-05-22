@@ -1,0 +1,108 @@
+body {
+	background-color: #e9ebee;
+}
+
+.btn:focus, .btn:active:focus, .btn.active:focus{
+    outline:none;
+    box-shadow:none;
+}
+
+hr {
+	margin: 10px 0;
+}
+
+.sofl-header {
+	padding: 10px 0px;
+	background-color: #2c3e50;
+}
+
+.sofl-header-logo {
+	font-family: 'Montserrat', sans-serif;
+	color: #bdc3c7;
+	font-size: 24px;
+	letter-spacing: 1.2px;
+}
+
+.sofl-header-logo-heart {
+	color: #e74c3c;
+	font-size: 24px;
+	top: 4px;
+}
+
+.sofl-tools {
+	margin-bottom: 20px;
+}
+
+.sofl-section {
+	margin-top: 40px;
+}
+
+.sofl-card {
+	background-color: #fff;
+	height: 324px;
+	border: 1px solid #d5d5d5;
+	border-radius: 4px;
+	margin-bottom: 20px;
+	padding: 20px;
+}
+
+.sofl-card-header {
+    font-size: 20px;
+    color: #7f8c8d;
+}
+
+.sofl-card {
+	position: relative;
+}
+
+.sofl-card-read-button {
+	position: absolute;
+	bottom: 20px;
+	right: 20px;
+}
+
+.sofl-card .sofl-card-delete-button {
+	opacity: 0;
+	visibility: hidden;
+	z-index: 10;
+	position: absolute;
+	top: -5px;
+	right: -8px;
+	color: #888;
+	font-size: 24px;
+	cursor: pointer;
+	transition: opacity 0.5s;
+  	transition: visibility 0s, opacity 0.5s linear;
+}
+
+.sofl-card:hover .sofl-card-delete-button {
+  	visibility: visible;
+  	opacity: 1;
+}
+
+.modal-lg {
+	max-width: 750px;
+}
+
+.modal-content {
+	padding: 20px;
+}
+
+.sofl-fun {
+	display: none;
+	margin: 40px;
+}
+
+.sofl-fun p {
+	font-family: 'Montserrat', sans-serif;	
+	color: #bdc3c7;
+	font-size: 60px;
+}
+
+.solf-load {
+	margin-bottom: 40px;
+}
+
+.solf-load-button {
+	display: none;
+}
