@@ -9,8 +9,7 @@ $(document).ready(function() {
 		questions.forEach(function(question) {
 			markdown += 
 			"[" + question.questionHeader + "]" +
-			"(https://stackoverflow.com/" +
-			question.questionType + "/" +
+			"(https://stackoverflow.com/questions/" +
 			question.questionId +
 			")\n";
 		});
