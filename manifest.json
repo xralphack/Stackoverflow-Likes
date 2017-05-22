@@ -1,7 +1,7 @@
 {
   "name": "Stackoverflow Likes",
   "short_name": "Stackoverflow Likes",
-  "version": "0.0.3",
+  "version": "0.0.5",
   "manifest_version": 2,
   "description": "Collect questions or anwsers on Stack Overflow",
   "homepage_url": "https://github.com/xralphack/Stackoverflow-Likes",
@@ -12,7 +12,7 @@
   },
   "default_locale": "en",
   "background": {
-    "page": "src/bg/background.html",
+    "scripts": ["src/bg/background.js"],
     "persistent": false
   },
   "chrome_url_overrides": {
@@ -37,11 +37,10 @@
         "vendor/jquery/jquery.min.js",
         "js/helper.js",
         "src/inject/inject.js"
-      ],
-      "run_at": "document_end"
+      ]
     }
   ],
   "permissions": [
-    "storage"
+    "storage", "webNavigation", "tabs", "http://stackoverflow.com/questions/*", "https://stackoverflow.com/questions/*"
   ]
 }
