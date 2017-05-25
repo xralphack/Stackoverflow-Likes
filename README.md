@@ -1,6 +1,10 @@
 # Stackoverflow-Likes
 A Chrome extension to help coder collecting notes on Stack Overflow
 
+![preview1](http://i.imgur.com/YKRVy7K.png)
+
+![preview2](http://i.imgur.com/eEV1b3D.png)
+
 ### Features & characteristics:
 * Show your likes on new tab
 * Hide it when you are tired
