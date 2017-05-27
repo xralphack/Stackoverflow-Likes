@@ -23,6 +23,10 @@ A <a href="https://chrome.google.com/webstore/detail/stackoverflow-likes/aajeclg
 2. Beautify
 3. Collect users feedback (if you like it, please let me know)
 
+### DEVELOP
+gulp watch
+zip -r ./stackoverflow.zip . -x node_modules/\* -x .git/\*
+
 ### UPDATE
 0.0.9 / 2017-0-28
   * using Vue.js
