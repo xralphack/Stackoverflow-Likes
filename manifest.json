@@ -1,7 +1,7 @@
 {
   "name": "Stackoverflow Likes",
   "short_name": "Stackoverflow Likes",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "manifest_version": 2,
   "description": "Collect questions or anwsers on Stack Overflow",
   "homepage_url": "https://github.com/xralphack/Stackoverflow-Likes",
@@ -38,9 +38,11 @@
     }
   ],
   "permissions": [
-    "storage", "webNavigation", "tabs", "http://stackoverflow.com/questions/*", "https://stackoverflow.com/questions/*"
+    // "storage", "webNavigation", "tabs", "http://stackoverflow.com/questions/*", "https://stackoverflow.com/questions/*"
+    "storage", "tabs", "http://stackoverflow.com/questions/*", "https://stackoverflow.com/questions/*"
   ],
   "browser_action": {
     "title": "Stackoverflow Likes"
-  }
+  },
+  "content_security_policy": "script-src 'self' https://www.google-analytics.com; object-src 'self'"
 }

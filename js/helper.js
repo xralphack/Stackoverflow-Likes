@@ -63,17 +63,21 @@ function updateQuestionsInStorage(questions) {
 }
 
 function getQuestionsDetail(questionIds, callback) {
-	questionIdsString = questionIds.join(';');
-	$.get('https://api.stackexchange.com/2.2/questions/' + questionIdsString + '?&site=stackoverflow&filter=withbody&key=bo9Y2boGWSMyTEZ)00i75Q((', function(data, status) {
-   		callback(data);
-	});
+	if (questionIds.length > 0) {
+		questionIdsString = questionIds.join(';');
+		$.get('https://api.stackexchange.com/2.2/questions/' + questionIdsString + '?&site=stackoverflow&filter=withbody&key=bo9Y2boGWSMyTEZ)00i75Q((', function(data, status) {
+	   		callback(data);
+		});
+	}
 }
 
 function getAnswersDetail(answerIds, callback) {
-	answerIdsString = answerIds.join(';');
-	$.get('https://api.stackexchange.com/2.2/answers/' + answerIdsString + '?&site=stackoverflow&filter=withbody&key=bo9Y2boGWSMyTEZ)00i75Q((', function(data, status) {
-   		callback(data);
-	});
+	if (answerIds.length > 0) {
+		answerIdsString = answerIds.join(';');
+		$.get('https://api.stackexchange.com/2.2/answers/' + answerIdsString + '?&site=stackoverflow&filter=withbody&key=bo9Y2boGWSMyTEZ)00i75Q((', function(data, status) {
+	   		callback(data);
+		});
+	}
 }
 
 

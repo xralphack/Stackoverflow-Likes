@@ -1,0 +1,34 @@
+{
+  "name": "stackoverflow-likes",
+  "version": "1.0.0",
+  "description": "A Chrome extension to help coder collecting notes on Stack Overflow",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xralphack/Stackoverflow-Likes.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/xralphack/Stackoverflow-Likes/issues"
+  },
+  "homepage": "https://github.com/xralphack/Stackoverflow-Likes#readme",
+  "devDependencies": {
+    "vue": "^2.3.3",
+    "gulp": "^3.9.1",
+    "webpack": "^2.6.1",
+    "webpack-stream": "^3.2.0",
+    "babel-core": "^6.0.0",
+    "babel-loader": "^6.0.0",
+    "babel-preset-env": "^1.5.1",
+    "cross-env": "^3.0.0",
+    "css-loader": "^0.25.0",
+    "file-loader": "^0.9.0",
+    "node-sass": "^4.5.0",
+    "sass-loader": "^5.0.1",
+    "vue-loader": "^12.1.1",
+    "vue-template-compiler": "^2.3.3"
+  }
+}

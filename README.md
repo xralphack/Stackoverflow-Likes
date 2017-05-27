@@ -1,5 +1,5 @@
 # Stackoverflow-Likes
-A Chrome extension to help coder collecting notes on Stack Overflow
+A <a href="https://chrome.google.com/webstore/detail/stackoverflow-likes/aajeclgjifmdgancolheofdpabgkaemc?hl=zh-TW" target="_blank">Chrome extension</a> to help coder collecting notes on Stack Overflow
 
 ![preview1](http://i.imgur.com/YKRVy7K.png)
 
@@ -22,6 +22,11 @@ A Chrome extension to help coder collecting notes on Stack Overflow
 1. Refactor
 2. Beautify
 3. Collect users feedback (if you like it, please let me know)
+
+### UPDATE
+0.0.9 / 2017-0-28
+  * using Vue.js
+  * add google analytic tracking code
 
 ```
 Feel free to report issues, happy coding ~

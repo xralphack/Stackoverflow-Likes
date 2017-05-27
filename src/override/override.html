@@ -8,7 +8,18 @@
 	<link rel="stylesheet" type="text/css" href="main.css">
 </head>
 <body>
+	<script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
+	  ga('create', 'UA-99615089-1', 'auto');
+	  ga('set', 'checkProtocolTask', function(){}); 
+	  // Removes failing protocol check. @see: http://stackoverflow.com/a/22152353/1958200
+	  ga('require', 'displayfeatures');
+	  ga('send', 'pageview', '/dashboard.html');
+	</script>
 	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 		<div class="modal-dialog modal-lg" role="document">
 			<div class="modal-content">
@@ -29,45 +40,18 @@
 		</div>
 	</div>
 
-
 	<header class="sofl-header">
 		<div class="container">
 			<span class="sofl-header-logo">Stackoverflow </span>
 			<span class="sofl-header-logo-heart glyphicon glyphicon-heart"></span>
 		</div>
 	</header>
-	<section class="sofl-section">
-		<div class="container">
-			<div class="sofl-tools">
-				<div class="btn-toolbar" role="toolbar">
-					<button id="sofl-clear" type="button" class="btn btn-default">
-						<span class="glyphicon glyphicon-trash"></span>
-					</button>
-					<button id="sofl-export" type="button" class="btn btn-default">
-						<span class="glyphicon glyphicon-export"></span>
-					</button>
-          <a href="https://github.com/xralphack/Stackoverflow-Likes" id="sofl-github" type="button" class="btn btn-default">
-            <img src="/img/github.png" alt="">
-          </a>
-				</div>
-			</div>
-			<div class="sofl-questions">
-				<div class="row solf-content">
 
-				</div>
-				<div class="row text-center solf-load">
-					<div class="col-md-4 col-md-offset-4">
-						<button class="btn btn-primary btn-block solf-load-button" data-offset="0">Load More</button>
-					</div>
-				</div>
-			</div>
-			
-		</div>
+	<div id="app"></div>
 
-	</section>
 	<script type="text/javascript" src="/vendor/jquery/jquery.min.js"></script>
 	<script type="text/javascript" src="/vendor/bootstrap-3.3.7/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="/js/helper.js"></script>
-	<script type="text/javascript" src="main.js"></script>
+	<script type="text/javascript" src="/dist/main.js"></script>
 </body>
 </html>
