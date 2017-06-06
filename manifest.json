@@ -1,7 +1,7 @@
 {
   "name": "Stackoverflow Likes",
   "short_name": "Stackoverflow Likes",
-  "version": "0.0.10",
+  "version": "0.0.11",
   "manifest_version": 2,
   "description": "Collect questions or anwsers on Stack Overflow",
   "homepage_url": "https://github.com/xralphack/Stackoverflow-Likes",
@@ -41,7 +41,7 @@
     "storage", "tabs", "http://stackoverflow.com/questions/*", "https://stackoverflow.com/questions/*"
   ],
   "browser_action": {
-    "title": "Stackoverflow Likes"
+    "default_popup": "src/browser_action/browser_action.html"
   },
   "content_security_policy": "script-src 'self' https://www.google-analytics.com; object-src 'self'"
 }

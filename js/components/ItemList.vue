@@ -1,7 +1,7 @@
 <template>
 	<div class="container wrapper">
 		<div class="toolbar-wrapper">
-			<div class="btn-toolbar" role="toolbar">
+			<div class="btn-toolbar pull-right" role="toolbar">
 				<button id="sofl-clear" type="button" class="btn btn-default" @click="clearButtonClicked">
 					<span class="glyphicon glyphicon-trash"></span>
 				</button>
@@ -12,9 +12,17 @@
 	    			<img class="github-icon" src="/img/github.png">
 	  			</a>
 			</div>
+			<div class="btn-toolbar" role="toolbar">
+				<button type="button" class="btn" :class="getTabClass(0)" @click="currentTab = 0;">
+					<span class="glyphicon glyphicon-heart"></span>
+				</button>
+				<button type="button" class="btn" :class="getTabClass(1)" @click="currentTab = 1;">
+					<span class="glyphicon glyphicon-bookmark"></span>
+				</button>
+			</div>
 		</div>
 
-		<div class="sofl-questions">
+		<div class="sofl-questions" v-show="currentTab == 0">
 			<div class="row solf-content">
 				<div class="col-md-4 col-sm-6" :key="item" v-for="(item, index) in items">
 					<div class="sofl-card">
@@ -37,6 +45,21 @@
 				</div>
 			</div>
 		</div>
+
+		<div class="sofl-bookmarks" v-show="currentTab == 1">
+			<div class="row">
+				<div class="col-md-8">
+					<div class="list-group">
+					  <a target="_blank" :href="bookmark.url" type="button" class="list-group-item clearfix" v-for="(bookmark, index) in bookmarks">
+					  	{{ bookmark.title }}
+						<button type="button" class="btn btn-default pull-right" @click.prevent.stop="deleteBookmark(index)">
+							<span class="glyphicon glyphicon-trash"></span>
+						</button>
+					  </a>
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
 </template>
 
@@ -44,10 +67,12 @@
 	export default {
 		data() {
 			return {
+				currentTab: 0,
 				limit: 6,
 				offset: 0,
 				hasMore: false,
-				items: []
+				items: [],
+				bookmarks: []
 			};
 		},
 		methods: {
@@ -62,6 +87,11 @@
 			      	this.items.push.apply(this.items, questions);
 
 			      	this.getItemsDetail(this.items);
+				});
+			},
+			displayBookmarks() {
+				getBookmarksInStorage((bookmarks) => {
+					this.bookmarks = bookmarks;
 				});
 			},
 			getItemsDetail(items) {
@@ -116,28 +146,45 @@
 				deleteQuestionById(this.items[index].questionId);
 				this.items.splice(index, 1);
 			},
+			deleteBookmark(index) {
+				deleteBookmark(this.bookmarks[index]);
+				this.bookmarks.splice(index, 1);
+			},
 			cleanItemBody(body) {
 
 				return $(body).text();
 			},
 			exportButtonClicked() {
-
-				chrome.tabs.create({ url: chrome.runtime.getURL("src/override/export.html") });
+				if (this.currentTab == 0) {
+					var hash = 'likes';
+				} else {
+					var hash = 'bookmarks';
+				}
+				chrome.tabs.create({ url: chrome.runtime.getURL("src/override/export.html#" + hash) });
 			},
 			clearButtonClicked() {
-				this.hasMore = false;
-				this.items = [];
-				deleteAllQuestions();
+				if (this.currentTab == 0) {
+					this.hasMore = false;
+					this.items = [];
+					deleteAllQuestions();
+				} else {
+					this.bookmarks = [];
+					deleteAllBookmarks();
+				}
+			},
+			getTabClass(index) {
+				return this.currentTab == index ? "btn-primary" : "btn-default";
 			}
 		},
 		mounted() {
 			this.displayItems(this.offset, this.limit);
+			this.displayBookmarks();
 		}
 	}
 </script>
 
 <style lang="scss" scoped>
-	.sofl-questions {
+	.sofl-questions, .sofl-bookmarks {
 		margin-bottom: 40px;
 	}
 	.toolbar-wrapper {

@@ -80,4 +80,40 @@ function getAnswersDetail(answerIds, callback) {
 	}
 }
 
+// BOOKMARKS
+
+function storeBookmark(bookmark) {
+	chrome.storage.sync.get(["bookmarks"], function(result) {
+        var bookmarks = result.bookmarks ? result.bookmarks : [];
+		bookmarks.unshift(bookmark);
+    	chrome.storage.sync.set({ bookmarks: bookmarks });
+    });
+}
+
+function getBookmarksInStorage(callback) {
+	chrome.storage.sync.get(["bookmarks"], function(result) {
+		var bookmarks = result.bookmarks ? result.bookmarks : [];		
+		callback(bookmarks);
+    });
+}
+
+function deleteBookmark(bookmark) {
+	getBookmarksInStorage(function(bookmarks) {
+		var index = -1;
+		$.each(bookmarks, function(i){
+			var originBookmark = bookmarks[i];
+    		if (JSON.stringify(originBookmark) === JSON.stringify(bookmark)) {
+        		index = i;
+			}
+		});
+		if (index > -1) {
+			bookmarks.splice(index, 1);
+    		chrome.storage.sync.set({ bookmarks: bookmarks });
+		}
+	})
+}
+
+function deleteAllBookmarks() {
+	chrome.storage.sync.set({ bookmarks: [] });
+}
 

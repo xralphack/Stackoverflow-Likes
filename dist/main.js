@@ -7432,14 +7432,39 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
 	data() {
 		return {
+			currentTab: 0,
 			limit: 6,
 			offset: 0,
 			hasMore: false,
-			items: []
+			items: [],
+			bookmarks: []
 		};
 	},
 	methods: {
@@ -7454,6 +7479,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 				this.items.push.apply(this.items, questions);
 
 				this.getItemsDetail(this.items);
+			});
+		},
+		displayBookmarks() {
+			getBookmarksInStorage(bookmarks => {
+				this.bookmarks = bookmarks;
 			});
 		},
 		getItemsDetail(items) {
@@ -7510,22 +7540,39 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			deleteQuestionById(this.items[index].questionId);
 			this.items.splice(index, 1);
 		},
+		deleteBookmark(index) {
+			deleteBookmark(this.bookmarks[index]);
+			this.bookmarks.splice(index, 1);
+		},
 		cleanItemBody(body) {
 
 			return $(body).text();
 		},
 		exportButtonClicked() {
-
-			chrome.tabs.create({ url: chrome.runtime.getURL("src/override/export.html") });
+			if (this.currentTab == 0) {
+				var hash = 'likes';
+			} else {
+				var hash = 'bookmarks';
+			}
+			chrome.tabs.create({ url: chrome.runtime.getURL("src/override/export.html#" + hash) });
 		},
 		clearButtonClicked() {
-			this.hasMore = false;
-			this.items = [];
-			deleteAllQuestions();
+			if (this.currentTab == 0) {
+				this.hasMore = false;
+				this.items = [];
+				deleteAllQuestions();
+			} else {
+				this.bookmarks = [];
+				deleteAllBookmarks();
+			}
+		},
+		getTabClass(index) {
+			return this.currentTab == index ? "btn-primary" : "btn-default";
 		}
 	},
 	mounted() {
 		this.displayItems(this.offset, this.limit);
+		this.displayBookmarks();
 	}
 });
 
@@ -7538,7 +7585,7 @@ exports = module.exports = __webpack_require__(7)();
 
 
 // module
-exports.push([module.i, "\n.sofl-questions[data-v-5acf42e8] {\n  margin-bottom: 40px;\n}\n.toolbar-wrapper[data-v-5acf42e8] {\n  margin-top: 20px;\n  margin-bottom: 20px;\n}\n.github-icon[data-v-5acf42e8] {\n  width: 20px;\n  height: 20px;\n}\n.sofl-card[data-v-5acf42e8] {\n  background-color: #fff;\n  height: 324px;\n  border: 1px solid #d5d5d5;\n  border-radius: 4px;\n  margin-bottom: 20px;\n  padding: 20px;\n}\n.sofl-card-header[data-v-5acf42e8] {\n  font-size: 20px;\n  color: #7f8c8d;\n}\n.sofl-card[data-v-5acf42e8] {\n  position: relative;\n}\n.sofl-card-read-button[data-v-5acf42e8] {\n  position: absolute;\n  bottom: 20px;\n  right: 20px;\n}\n.sofl-card .delete-item-button[data-v-5acf42e8] {\n  opacity: 0;\n  visibility: hidden;\n  z-index: 10;\n  position: absolute;\n  top: -5px;\n  right: -8px;\n  color: #888;\n  font-size: 24px;\n  cursor: pointer;\n  transition: opacity 0.5s;\n  transition: visibility 0s, opacity 0.5s linear;\n}\n.sofl-card:hover .delete-item-button[data-v-5acf42e8] {\n  visibility: visible;\n  opacity: 1;\n}\n", ""]);
+exports.push([module.i, "\n.sofl-questions[data-v-5acf42e8], .sofl-bookmarks[data-v-5acf42e8] {\n  margin-bottom: 40px;\n}\n.toolbar-wrapper[data-v-5acf42e8] {\n  margin-top: 20px;\n  margin-bottom: 20px;\n}\n.github-icon[data-v-5acf42e8] {\n  width: 20px;\n  height: 20px;\n}\n.sofl-card[data-v-5acf42e8] {\n  background-color: #fff;\n  height: 324px;\n  border: 1px solid #d5d5d5;\n  border-radius: 4px;\n  margin-bottom: 20px;\n  padding: 20px;\n}\n.sofl-card-header[data-v-5acf42e8] {\n  font-size: 20px;\n  color: #7f8c8d;\n}\n.sofl-card[data-v-5acf42e8] {\n  position: relative;\n}\n.sofl-card-read-button[data-v-5acf42e8] {\n  position: absolute;\n  bottom: 20px;\n  right: 20px;\n}\n.sofl-card .delete-item-button[data-v-5acf42e8] {\n  opacity: 0;\n  visibility: hidden;\n  z-index: 10;\n  position: absolute;\n  top: -5px;\n  right: -8px;\n  color: #888;\n  font-size: 24px;\n  cursor: pointer;\n  transition: opacity 0.5s;\n  transition: visibility 0s, opacity 0.5s linear;\n}\n.sofl-card:hover .delete-item-button[data-v-5acf42e8] {\n  visibility: visible;\n  opacity: 1;\n}\n", ""]);
 
 // exports
 
@@ -7862,7 +7909,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('div', {
     staticClass: "toolbar-wrapper"
   }, [_c('div', {
-    staticClass: "btn-toolbar",
+    staticClass: "btn-toolbar pull-right",
     attrs: {
       "role": "toolbar"
     }
@@ -7888,7 +7935,44 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_c('span', {
     staticClass: "glyphicon glyphicon-export"
-  })]), _vm._v(" "), _vm._m(0)])]), _vm._v(" "), _c('div', {
+  })]), _vm._v(" "), _vm._m(0)]), _vm._v(" "), _c('div', {
+    staticClass: "btn-toolbar",
+    attrs: {
+      "role": "toolbar"
+    }
+  }, [_c('button', {
+    staticClass: "btn",
+    class: _vm.getTabClass(0),
+    attrs: {
+      "type": "button"
+    },
+    on: {
+      "click": function($event) {
+        _vm.currentTab = 0;
+      }
+    }
+  }, [_c('span', {
+    staticClass: "glyphicon glyphicon-heart"
+  })]), _vm._v(" "), _c('button', {
+    staticClass: "btn",
+    class: _vm.getTabClass(1),
+    attrs: {
+      "type": "button"
+    },
+    on: {
+      "click": function($event) {
+        _vm.currentTab = 1;
+      }
+    }
+  }, [_c('span', {
+    staticClass: "glyphicon glyphicon-bookmark"
+  })])])]), _vm._v(" "), _c('div', {
+    directives: [{
+      name: "show",
+      rawName: "v-show",
+      value: (_vm.currentTab == 0),
+      expression: "currentTab == 0"
+    }],
     staticClass: "sofl-questions"
   }, [_c('div', {
     staticClass: "row solf-content"
@@ -7934,7 +8018,44 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         _vm.displayItems(_vm.offset, _vm.limit)
       }
     }
-  }, [_vm._v("Load More")])])])])])
+  }, [_vm._v("Load More")])])])]), _vm._v(" "), _c('div', {
+    directives: [{
+      name: "show",
+      rawName: "v-show",
+      value: (_vm.currentTab == 1),
+      expression: "currentTab == 1"
+    }],
+    staticClass: "sofl-bookmarks"
+  }, [_c('div', {
+    staticClass: "row"
+  }, [_c('div', {
+    staticClass: "col-md-8"
+  }, [_c('div', {
+    staticClass: "list-group"
+  }, _vm._l((_vm.bookmarks), function(bookmark, index) {
+    return _c('a', {
+      staticClass: "list-group-item clearfix",
+      attrs: {
+        "target": "_blank",
+        "href": bookmark.url,
+        "type": "button"
+      }
+    }, [_vm._v("\n\t\t\t\t  \t" + _vm._s(bookmark.title) + "\n\t\t\t\t\t"), _c('button', {
+      staticClass: "btn btn-default pull-right",
+      attrs: {
+        "type": "button"
+      },
+      on: {
+        "click": function($event) {
+          $event.preventDefault();
+          $event.stopPropagation();
+          _vm.deleteBookmark(index)
+        }
+      }
+    }, [_c('span', {
+      staticClass: "glyphicon glyphicon-trash"
+    })])])
+  }))])])])])
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('a', {
     staticClass: "btn btn-default",

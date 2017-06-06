@@ -24,13 +24,16 @@ A <a href="https://chrome.google.com/webstore/detail/stackoverflow-likes/aajeclg
 3. Collect users feedback (if you like it, please let me know)
 
 ### DEVELOP
-gulp watch
-zip -r ./stackoverflow.zip . -x node_modules/\* -x .git/\*
+* gulp watch
+* zip -r ./stackoverflow.zip . -x node_modules/\* -x .git/\*
 
 ### UPDATE
-0.0.9 / 2017-0-28
+0.0.9  / 2017-05-28
   * using Vue.js
   * add google analytic tracking code
-
+0.0.11 / 2017-06-06
+  * add popup
+  * add search on Stack Overflow
+  * add bookmarks
 ```
 Feel free to report issues, happy coding ~

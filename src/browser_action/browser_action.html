@@ -1,17 +1,42 @@
-<!doctype html>
-<style type="text/css">
-	#mainPopup {
-		padding: 10px;
-		height: 200px;
-		width: 400px;
-		font-family: Helvetica, Ubuntu, Arial, sans-serif;
-	}
-	h1 {
-		font-size: 2em;
-	}
-</style>
-
-<div id="mainPopup">
-<h1>Hello extensionizr!</h1>
-<p>To shut this popup down, edit the manifest file and remove the "default popup" key. To edit it, just edit ext/browser_action/browser_action.html. The CSS is there, too.</p>
-</div>
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="/vendor/bootstrap-3.3.7/css/bootstrap.min.css">
+	<style type="text/css">
+		#mainPopup {
+			padding: 20px 0;
+			height: 200px;
+			width: 400px;
+		}
+		hr {
+			border-top: 4px solid #f2f2f2;
+		}
+	</style>
+</head>
+<body>
+	<div id="mainPopup">
+		<div class="container">
+			<div class="form-group">
+				<input id="search-input" type="text" class="form-control" placeholder="Search on Stack Overflow...">
+			</div>
+			<hr>
+			<div class="form-group">
+				<select id="tags-select" class="form-control"></select>
+			</div>
+			<div class="form-group clearfix">
+				<button id="bookmark-button" class="btn btn-default pull-right">
+					<span class="glyphicon glyphicon-bookmark" style="top: 3px; right: 3px;"></span> save
+				</button>
+			</div>
+			<hr>
+			<div class="form-group">
+				<button id="stackoverflow-likes-button" class="btn btn-block btn-primary">Stackoverflow Likes</button>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript" src="/vendor/jquery/jquery.min.js"></script>
+	<script type="text/javascript" src="/js/helper.js"></script>
+	<script type="text/javascript" src="popup.js"></script>
+</body>
+</html>
