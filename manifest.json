@@ -1,7 +1,7 @@
 {
   "name": "Stackoverflow Likes",
   "short_name": "Stackoverflow Likes",
-  "version": "0.0.11",
+  "version": "0.0.12",
   "manifest_version": 2,
   "description": "Collect questions or anwsers on Stack Overflow",
   "homepage_url": "https://github.com/xralphack/Stackoverflow-Likes",
@@ -12,7 +12,7 @@
   },
   "default_locale": "en",
   "background": {
-    "scripts": ["src/bg/background.js"],
+    "page": "src/bg/background.html",
     "persistent": false
   },
   "content_scripts": [
