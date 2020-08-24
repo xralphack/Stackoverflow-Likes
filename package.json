@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "A Chrome extension to help coder collecting notes on Stack Overflow",
   "scripts": {
+    "gulp": "gulp watch",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

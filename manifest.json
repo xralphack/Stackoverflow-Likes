@@ -1,8 +1,9 @@
 {
   "name": "Stackoverflow Likes",
   "short_name": "Stackoverflow Likes",
-  "version": "0.0.12",
+  "version": "0.0.13",
   "manifest_version": 2,
+  "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAoky/MnmU6ST75/mjJdRGUlSxMVj8SsDKnbc8690aEmE3LKJ3UwCwKZcEnW4bYkSAdwDpwLfKVcH1fqXikgsKH/5AXpWLxsyMq4vc/uhpVYYfam6OYeXyKjP53KBS1u9i0tfCvDL+r6z0Dv7/lchVf/C4tUBHtbh1cVSP2H+tZHFhHsPT3b1WGB36LihFDVrQ0wl9qswPDiyNqcp/cvwvI4+2BHdnZbFVHKWFyChh4Kl90YfNoi2zUOZeyPuojLMzvRCuK11kHPK24e2bMsz0XiGcQtaIcnUL7nPjqyfvkq7lx34iGjruvo26vbo7JEgbJJWsahl52lQ9wZnzm1EgXQIDAQAB",
   "description": "Collect questions or anwsers on Stack Overflow",
   "homepage_url": "https://github.com/xralphack/Stackoverflow-Likes",
   "icons": {

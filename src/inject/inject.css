@@ -4,6 +4,8 @@
   top: 8px;
   width: 22px;
   cursor: pointer;
+  display: flex;
+  align-self: center;
 }
 
 .sofl-like-button.active {

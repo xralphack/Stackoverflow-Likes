@@ -6,8 +6,9 @@ chrome.extension.sendMessage({}, function(response) {
       // ----------------------------------------------------------
 
       function injectLikeButtons() {
-        $('.votecell .vote').each(function() {
-          var questionId = $(this).find('input[name=_id_]').val();
+        $('.votecell .js-voting-container').each(function() {
+          var questionId = $(this).data('post-id');
+
           if (questionId) {
             if ($('.sofl-like-button#' + questionId).length == 0) {
               $(getLikeButtonTemplate(questionId)).appendTo($(this)).on('click', function() {
